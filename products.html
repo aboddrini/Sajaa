@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Redesigned - سجى محمد خفاجة</title>
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - شركة الأجهزة الكهربائية</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    
+        <header>
+        <h1>مرحبًا بكم في التصميم الجديد</h1>
+        
+        <div class="header-container">
+            <img src="images/logo.png" alt="شعار الشركة" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="products.html" class="active">المنتجات</a></li>
+                    <li><a href="about.html">عن الشركة</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li><a href="cart.html">السلة</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- قسم المنتجات -->
+    <main>
+        <section class="products">
+            <h1>منتجاتنا</h1>
+            <p>اختر منتجاتك المفضلة واستمتع بخيارات الدفع المميزة.</p>
+
+            <div class="product-grid">
+                <!-- المنتج 1 -->
+                <div class="product" data-id="1" data-name="ثلاجة" data-price-ils="3500" data-price-usd="950" data-price-usdt="950">
+                    <img src="images/fridge.jpg" alt="ثلاجة">
+                    <h2>ثلاجة</h2>
+                    <p>أفضل الثلاجات للحفاظ على طعامك طازجاً.</p>
+                    <p class="price">السعر: <span class="price-value">3500</span> <span class="currency-symbol">شيكل</span></p>
+                    <button class="btn-primary" onclick="addToCart(this)">إضافة إلى السلة</button>
+                </div>
+                <!-- المنتج 2 -->
+                <div class="product" data-id="2" data-name="غسالة" data-price-ils="2800" data-price-usd="760" data-price-usdt="760">
+                    <img src="images/washing-machine.jpg" alt="غسالة">
+                    <h2>غسالة</h2>
+                    <p>غسالة بتقنيات حديثة لتوفير الطاقة.</p>
+                    <p class="price">السعر: <span class="price-value">2800</span> <span class="currency-symbol">شيكل</span></p>
+                    <button class="btn-primary" onclick="addToCart(this)">إضافة إلى السلة</button>
+                </div>
+                <!-- المنتج 3 -->
+                <div class="product" data-id="3" data-name="ميكروويف" data-price-ils="1200" data-price-usd="320" data-price-usdt="320">
+                    <img src="images/microwave.jpg" alt="ميكروويف">
+                    <h2>ميكروويف</h2>
+                    <p>ميكروويف متطور لإعداد الطعام بسهولة.</p>
+                    <p class="price">السعر: <span class="price-value">1200</span> <span class="currency-symbol">شيكل</span></p>
+                    <button class="btn-primary" onclick="addToCart(this)">إضافة إلى السلة</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر -->
+    
+        <footer>
+        <p>© 2024 تصميم: سجى محمد خفاجة</p>
+        
+        <p>&copy; 2024 شركة الأجهزة الكهربائية. جميع الحقوق محفوظة. | <a href="contact.html">تواصل معنا</a></p>
+        <div class="social-links">
+            <a href="#" target="_blank">فيسبوك</a> | 
+            <a href="#" target="_blank">تويتر</a> | 
+            <a href="#" target="_blank">إنستجرام</a>
+        </div>
+    </footer>
+
+    <script>
+        // إضافة المنتج إلى السلة
+        function addToCart(button) {
+            const product = button.closest('.product');
+            const id = product.getAttribute('data-id');
+            const name = product.getAttribute('data-name');
+            const price = product.querySelector('.price-value').textContent;
+            const currency = document.querySelector('.currency-symbol').textContent;
+
+            // قراءة السلة من LocalStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // التحقق إذا كان المنتج موجودًا
+            const existingProduct = cart.find(item => item.id === id);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    currency,
+                    quantity: 1,
+                });
+            }
+
+            // تخزين السلة المحدثة
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} تمت إضافته إلى السلة.`);
+        }
+    </script>
+</body>
+</html>

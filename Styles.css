@@ -1,0 +1,46 @@
+
+/* Redesigned by سجى محمد خفاجة */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #ffffff;
+}
+header, footer {
+    background-color: #101820;
+    padding: 20px;
+    text-align: center;
+}
+header h1, footer p {
+    color: #f2aa4c;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #f2aa4c;
+    padding: 10px;
+}
+nav a {
+    text-decoration: none;
+    color: #101820;
+    margin: 0 15px;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #ffffff;
+}
+main {
+    padding: 20px;
+}
+button {
+    background-color: #f2aa4c;
+    border: none;
+    padding: 10px 20px;
+    color: #101820;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:hover {
+    background-color: #101820;
+    color: #f2aa4c;
+}
